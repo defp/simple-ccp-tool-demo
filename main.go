@@ -71,6 +71,15 @@ func setupRouter() *gin.Engine {
 			}
 		}
 	})
+	
+	r.DELETE("/files", func(c *gin.Context) {
+		fileId := c.Query("file_id")
+		if body, err := ccp_utils.DeleteFile(akClient, fileId); err != nil {
+			c.JSON(http.StatusBadRequest, gin.H{ "error": err.Error() })
+		} else {
+			c.JSON(http.StatusOK, body)
+		}
+	})
 
 	return r
 }

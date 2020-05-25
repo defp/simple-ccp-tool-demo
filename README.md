@@ -8,6 +8,8 @@ env DOMAIN_ID=hz694 ENDPOINT=hz694.api.alicloudccp.com ACCESS_KEY_ID=$ACCESS_KEY
 
 ## api documentation
 
+endpoint: `http://localhost:8080`
+
 获取所有文件
 
 ```sh
@@ -21,6 +23,13 @@ curl -X GET "http://localhost:8080/files"
 curl -X "POST" "http://localhost:8080/files/create" \
      -H 'Content-Type: multipart/form-data; charset=utf-8; boundary=__X_PAW_BOUNDARY__' \
      -F "file="
+```
+
+删除文件
+
+```sh
+## delete file
+curl -X "DELETE" "http://localhost:8080/files?file_id=5ecbb8885e045e37ce8f4c7c86a755c97dde275e"
 ```
 
 ## links

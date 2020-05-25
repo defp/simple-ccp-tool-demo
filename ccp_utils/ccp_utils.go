@@ -78,3 +78,19 @@ func CompleteFile(akClient *ccpsdk.Client, createFileBody *ccpsdk.CCPCreateFileR
 	}
 	return completeResponse.Body, nil
 }
+
+// DeleteFile 删除文件
+func DeleteFile(akClient *ccpsdk.Client, fileID string) (*ccpsdk.CCPDeleteFileResponse, error) {
+	deleteFileModel := new(ccpsdk.DeleteFileRequestModel)
+	deleteFileRequest := new(ccpsdk.CCPDeleteFileRequest)
+	deleteFileRequest.SetDriveId(os.Getenv("DRIVE_ID"))
+	deleteFileRequest.SetFileId(fileID)
+	deleteFileModel.SetBody(deleteFileRequest)
+
+	response, err := akClient.DeleteFile(deleteFileModel, runtimeOptions)
+	if err != nil {
+		return nil, err
+	}
+
+	return response.Body, nil
+}
