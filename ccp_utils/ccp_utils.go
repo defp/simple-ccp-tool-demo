@@ -1,13 +1,12 @@
 package ccp_utils
 
 import (
-	"log"
 	"os"
 
 	ccpsdk "github.com/alibabacloud-go/ccppath-sdk/client"
 )
 
-func ListFiles(akClient *ccpsdk.Client) (*ccpsdk.CCPListFileResponse, error)  {
+func ListFiles(akClient *ccpsdk.Client) (*ccpsdk.CCPListFileResponse, error) {
 	listFileRequestModel := new(ccpsdk.ListFileRequestModel)
 
 	listFileRequest := new(ccpsdk.CCPListFileRequest)

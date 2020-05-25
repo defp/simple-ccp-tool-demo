@@ -9,9 +9,9 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-var akClient  *ccpsdk.Client
+var akClient *ccpsdk.Client
 
-func init()  {
+func init() {
 	var akConfig = new(ccpsdk.Config).
 		SetDomainId(os.Getenv("DOMAIN_ID")).
 		SetProtocol("https").
@@ -38,11 +38,12 @@ func setupRouter() *gin.Engine {
 
 	r.GET("/files", func(c *gin.Context) {
 		if body, err := ccp_utils.ListFiles(akClient); err != nil {
-			c.JSON(400, gin.H{ "err_msg": err.Error()})
+			c.JSON(400, gin.H{"err_msg": err.Error()})
 		} else {
 			c.JSON(200, body)
 		}
 	})
+
 	return r
 }
 
